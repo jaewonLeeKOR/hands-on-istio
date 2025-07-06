@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hands-on-istio
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: https://github.com/jaewonLeeKOR/hands-on-istio.git
+      targetRevision: HEAD
+      path: services
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

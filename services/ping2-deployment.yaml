@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ping2-deployment
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: ping2
+  template:
+    metadata:
+      labels:
+        app: ping2
+    spec:
+      containers:
+        - name: ping2
+          image: ghcr.io/jaewonleekor/spring-ping:0.0.2
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
