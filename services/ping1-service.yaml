@@ -3,12 +3,10 @@ kind: Service
 metadata:
   name: ping1-service
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: ping1
   ports:
     - protocol: TCP
       port: 8080
       targetPort: 8080
-      nodePort: 30081
-  sessionAffinity: ClientIP
