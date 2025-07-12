@@ -6,22 +6,26 @@ metadata:
 spec:
   gateways:
     - ping-gateway
+  hosts:
+    - "*"
   http:
     - match:
         - uri:
-          prefix: /ping1
+            prefix: /ping1/
       rewrite:
         uri: /
       route:
         - destination:
-          host: ping1-service
-          port: 8080
+            host: ping1-service
+            port:
+              number: 8080
     - match:
         - uri:
-          prefix: /ping2
+            prefix: /ping2/
       rewrite:
         uri: /
       route:
         - destination:
-          host: ping2-service
-          port: 8080
+            host: ping2-service
+            port:
+              number: 8080
